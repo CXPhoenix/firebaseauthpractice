@@ -1,1 +1,42 @@
-login sucess
+<h1 id="welcome">Login Sucess</h1>
+
+
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+
+<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-analytics.js"></script>
+
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-firestore.js"></script>
+
+<script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+        apiKey: "AIzaSyDp946q8Dcvt8vD0lTn__IsG--GLj4jGGc",
+        authDomain: "realisticpuzzle.firebaseapp.com",
+        projectId: "realisticpuzzle",
+        storageBucket: "realisticpuzzle.appspot.com",
+        messagingSenderId: "368962359768",
+        appId: "1:368962359768:web:7c10a33f73ad09a32762ad",
+        measurementId: "G-0ZT3CTZ9HV"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+
+</script>
+
+
+<script>
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            document.getElementById("welcome").innerHTML += (", Hello " + user.displayName);
+        } else {
+            window.alert("please sign in..");
+            window.location.href = "/firebaseauthpractice";
+        }
+    });
+
+</script>
